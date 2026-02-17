@@ -910,7 +910,9 @@ body {
     
     /* Hero */
     .hero {
-        padding: 100px 20px 60px;
+        padding: 140px 20px 60px; /* Increased top padding to clear fixed header + ticker */
+        align-items: flex-start;
+        text-align: center;
     }
 
     .main-title {
