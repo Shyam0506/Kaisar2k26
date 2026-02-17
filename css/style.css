@@ -43,6 +43,12 @@ body {
     opacity: 0.6;
 }
 
+@media (max-width: 768px) {
+    .cursor-glow {
+        display: none;
+    }
+}
+
 /* Navbar */
 .navbar {
     position: fixed;
@@ -789,29 +795,198 @@ body {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* Responsive */
+/* Responsive Design */
+
+/* Tablet & Smaller Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .main-title { font-size: 5rem; }
+    .hero { padding-top: 140px; }
+    .section { padding: 4rem 5%; }
+}
+
+/* Tablets (max-width: 768px) */
 @media (max-width: 768px) {
-    .main-title { font-size: 3.5rem; }
-    .nav-links { display: none; }
+    /* Navigation */
+    .navbar { padding: 1rem 5%; }
     
-    .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        padding: 2rem 0;
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    .hamburger { 
+        display: block; 
+        z-index: 1001;
     }
 
-    .nav-links.active li {
-        margin: 1rem 0;
+    .hamburger.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        transition: var(--transition);
+        backdrop-filter: blur(15px);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0;
+        opacity: 0;
+        animation: fadeInUp 0.5s ease forwards;
+    }
+
+    /* Stagger animation for nav items */
+    .nav-links li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links li:nth-child(2) { animation-delay: 0.2s; }
+    .nav-links li:nth-child(3) { animation-delay: 0.3s; }
+    .nav-links li:nth-child(4) { animation-delay: 0.4s; }
+    .nav-links li:nth-child(5) { animation-delay: 0.5s; }
+    .nav-links li:nth-child(6) { animation-delay: 0.6s; }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+    }
+    
+    .nav-btn .nav-btn-register {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: 120px;
+        align-items: center; /* Center vertically if needed */
+    }
+
+    .main-title {
+        font-size: 3.5rem;
+        line-height: 1.1;
+    }
+
+    .dept-name {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .countdown-timer {
+        gap: 1rem;
+    }
+    
+    .time-block {
+        padding: 0.8rem;
+        min-width: 70px;
+    }
+    
+    .time-value {
+        font-size: 2rem;
+    }
+
+    /* Event Cards */
+    .events-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Navbar */
+    .logo img { height: 45px; }
+    
+    /* Hero */
+    .hero {
+        padding: 100px 20px 60px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    /* Countdown */
+    .countdown-timer {
+        gap: 0.5rem;
+    }
+
+    .time-block {
+        min-width: 60px;
+        padding: 0.5rem;
+    }
+
+    .time-value {
+        font-size: 1.5rem;
+    }
+
+    .time-label {
+        font-size: 0.6rem;
+    }
+
+    /* Access Buttons */
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
         text-align: center;
     }
 
-    .hamburger { display: block; }
-    .hero { padding-top: 60px; }
+    /* Event Details */
+    .event-details {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Sections */
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-desc {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .footer-section h3 {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+    
+    .slide-motion-line {
+        top: 76px; /* Adjust for smaller header height if needed */
+    }
+    
+    .map-container iframe {
+        height: 300px;
+    }
 }
